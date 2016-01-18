@@ -33,31 +33,45 @@ import org.w3c.dom.Document;
  * 
  * TODO: Add a method that takes URLs
  *
- * @author    Adrian Mouat
+ * @author Adrian Mouat
  */
 
 public interface Diff {
 
-    /**
-     * Differences two files.
-     *
-     * Returns a patch document representing the differences. 
-     * 
-     * The document will have only one empty element if the documents are
-     * identical.
-     *
-     * TODO: Consider changing the return type to an interface supporting
-     * printing to stream and a boolean areIdentical method.
-     *
-     * @param f1    Original file
-     * @param f2    Modified file
-     * @return Document An XML document containing the differences between the 
-     *                  2 files.
-     * @throws DiffException If something goes wrong
-     */
+  /**
+   * Differences two files.
+   *
+   * Returns a patch document representing the differences.
+   * 
+   * The document will have only one empty element if the documents are
+   * identical.
+   *
+   * TODO: Consider changing the return type to an interface supporting printing
+   * to stream and a boolean areIdentical method.
+   *
+   * @param f1
+   *          Original file
+   * @param f2
+   *          Modified file
+   * @return Document An XML document containing the differences between the 2
+   *         files.
+   * @throws DiffException
+   *           If something goes wrong
+   */
 
-    Document diff(final File f1, final File f2) throws DiffException;
+  Document diff(final File f1, final File f2) throws DiffException;
 
-
+  /**
+   * Differences two existing documents. Added by Jonathan Schram 1/18/16 to
+   * expose existing Fmes capability.
+   * 
+   * @param d1
+   *          Original document
+   * @param d2
+   *          Modified document
+   * @return XML document containing differences between the two documents
+   * @throws DiffException
+   *           If there is a problem with differencing
+   */
+  Document diff(final Document d1, final Document d2) throws DiffException;
 }
-
